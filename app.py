@@ -42,20 +42,21 @@ if start_date >= end_date:
     st.stop()
 
 # --- Custom UI: Google Font + CSS for modern/professional look ---
+# MENGGUNAKAN TEMA GELAP ELEGAN (DARK/SLATE MODE)
 st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
     html, body, [class*="css"]  {font-family: 'Inter', sans-serif;}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:8px;background:linear-gradient(90deg,#071027 0%, #0f1724 100%);color:#e6eef6;margin-bottom:18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:8px;background:linear-gradient(90deg,#0f172a 0%, #1e293b 100%);color:#f8fafc;margin-bottom:18px; border: 1px solid #334155;}
     .logo{display:flex;align-items:center;gap:10px}
     .logo img{height:36px;border-radius:6px}
-    .app-title{font-size:20px;font-weight:700;margin:0}
-    .app-sub{color:#9fb6c8;margin:0;font-size:13px}
-    .card{background:#ffffff;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(15,23,36,0.08);}
-    .metric-card{background:linear-gradient(180deg,#fbfdff,#f6fbff);border-radius:8px;padding:12px 14px}
+    .app-title{font-size:20px;font-weight:700;margin:0; color:#f8fafc;}
+    .app-sub{color:#94a3b8;margin:0;font-size:13px}
+    .card{background:#1e293b;border-radius:10px;padding:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #334155;}
+    .metric-card{background:#1e293b;border-radius:8px;padding:12px 14px; border: 1px solid #334155;}
     .kpi-row{display:flex;gap:12px}
-    .muted{color:#6b7280}
+    .muted{color:#94a3b8}
     </style>
     """,
     unsafe_allow_html=True
@@ -202,40 +203,40 @@ else:
     # ====================================================================
     st.markdown("---")
 
-    # KPI row (cards)
+    # KPI row (cards) - Teks disesuaikan untuk mode gelap
     k1, k2, k3, k4 = st.columns(4)
     k1.markdown(
-        f"<div class='metric-card'><div style='color:#475569;font-size:12px'>Accuracy</div><div style='font-size:20px;font-weight:700;color:#0f1724'>{skor_akurasi * 100:.2f}%</div></div>",
+        f"<div class='metric-card'><div style='color:#94a3b8;font-size:12px'>Accuracy</div><div style='font-size:20px;font-weight:700;color:#f8fafc'>{skor_akurasi * 100:.2f}%</div></div>",
         unsafe_allow_html=True,
     )
     k2.markdown(
-        f"<div class='metric-card'><div style='color:#475569;font-size:12px'>Precision</div><div style='font-size:20px;font-weight:700;color:#0f1724'>{skor_presisi * 100:.2f}%</div></div>",
+        f"<div class='metric-card'><div style='color:#94a3b8;font-size:12px'>Precision</div><div style='font-size:20px;font-weight:700;color:#f8fafc'>{skor_presisi * 100:.2f}%</div></div>",
         unsafe_allow_html=True,
     )
     k3.markdown(
-        f"<div class='metric-card'><div style='color:#475569;font-size:12px'>Recall</div><div style='font-size:20px;font-weight:700;color:#0f1724'>{skor_recall * 100:.2f}%</div></div>",
+        f"<div class='metric-card'><div style='color:#94a3b8;font-size:12px'>Recall</div><div style='font-size:20px;font-weight:700;color:#f8fafc'>{skor_recall * 100:.2f}%</div></div>",
         unsafe_allow_html=True,
     )
     k4.markdown(
-        f"<div class='metric-card'><div style='color:#475569;font-size:12px'>F1-Score</div><div style='font-size:20px;font-weight:700;color:#0f1724'>{skor_f1 * 100:.2f}%</div></div>",
+        f"<div class='metric-card'><div style='color:#94a3b8;font-size:12px'>F1-Score</div><div style='font-size:20px;font-weight:700;color:#f8fafc'>{skor_f1 * 100:.2f}%</div></div>",
         unsafe_allow_html=True,
     )
 
-    # Recommendation + details
+    # Recommendation + details - Teks disesuaikan untuk mode gelap
     left_col, right_col = st.columns([1, 1])
     with left_col:
         st.subheader("Rekomendasi Sinyal Keputusan (Real-Time)")
         if prediksi_aktual == 1:
             st.markdown(
-                f"<div class='card' style='border-left:6px solid #10b981;padding:12px'>\n                <strong style=\"font-size:16px;color:#065f46\">🟢 BUY (BELI)</strong>\n                <div style=\"color:#374151;margin-top:6px\">Probabilitas Naik: <strong>{prob_naik:.1f}%</strong> — Turun: {prob_turun:.1f}%</div>\n                </div>",
+                f"<div class='card' style='border-left:6px solid #10b981;padding:16px'>\n                <strong style=\"font-size:18px;color:#34d399\">🟢 BUY (BELI)</strong>\n                <div style=\"color:#cbd5e1;margin-top:6px\">Probabilitas Naik: <strong style='color:#f8fafc'>{prob_naik:.1f}%</strong> — Turun: {prob_turun:.1f}%</div>\n                </div>",
                 unsafe_allow_html=True,
             )
         else:
             st.markdown(
-                f"<div class='card' style='border-left:6px solid #ef4444;padding:12px'>\n                <strong style=\"font-size:16px;color:#7f1d1d\">🔴 SELL (JUAL)</strong>\n                <div style=\"color:#374151;margin-top:6px\">Probabilitas Turun: <strong>{prob_turun:.1f}%</strong> — Naik: {prob_naik:.1f}%</div>\n                </div>",
+                f"<div class='card' style='border-left:6px solid #ef4444;padding:16px'>\n                <strong style=\"font-size:18px;color:#f87171\">🔴 SELL (JUAL)</strong>\n                <div style=\"color:#cbd5e1;margin-top:6px\">Probabilitas Turun: <strong style='color:#f8fafc'>{prob_turun:.1f}%</strong> — Naik: {prob_naik:.1f}%</div>\n                </div>",
                 unsafe_allow_html=True,
             )
-
+            
     with right_col:
         st.subheader("Metrik Evaluasi — Detail")
         st.write("Skor dievaluasi menggunakan Confusion Matrix pada 20% data uji historis.")
@@ -291,11 +292,12 @@ else:
     grafik_subplots.add_hline(y=0.2, line_dash="dash", row=2, col=1,
                                line_color="green", annotation_text="Oversold (0.2)")
 
+    # UBAH TEMA PLOTLY MENJADI DARK
     grafik_subplots.update_layout(
         xaxis_rangeslider_visible=False,
         height=750,
         margin=dict(l=25, r=25, t=40, b=25),
-        template='plotly_white',
+        template='plotly_dark',
         font=dict(family='Inter, Arial')
     )
     st.plotly_chart(grafik_subplots, use_container_width=True)
@@ -319,11 +321,12 @@ else:
         color='Importance',
         color_continuous_scale='Blues'
     )
+    # UBAH TEMA PLOTLY MENJADI DARK
     fig_imp.update_layout(
         height=400,
         margin=dict(l=25, r=25, t=40, b=25),
         coloraxis_showscale=False,
-        template='plotly_white',
+        template='plotly_dark',
         font=dict(family='Inter, Arial')
     )
     st.plotly_chart(fig_imp, use_container_width=True)
