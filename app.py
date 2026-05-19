@@ -81,7 +81,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.caption("Implementasi Algoritma eXtreme Gradient Boosting (XGBoost) — tampilan telah diperbarui untuk kesan profesional.")
+st.caption("Implementasi Algoritma eXtreme Gradient Boosting (XGBoost) - 5230411291")
 
 # ====================================================================
 # 2. LAPISAN INPUT / DATA LAYER (API YFINANCE PULLING)
