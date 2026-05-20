@@ -44,7 +44,8 @@ st.markdown("""
     /* Hide Streamlit Clutter */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
+    header {background-color: transparent !important;} 
+    /* Baris header {visibility: hidden;} dihapus agar panah sidebar tetap muncul */
 
     /* Premium Top Navbar */
     .ai-navbar {
